@@ -1,0 +1,23 @@
+## IDE
+.idea
+.vscode
+
+## Python
+*.py[co]
+*.egg*
+.coverage
+
+## Project
+media/
+
+## Prepros (SASS compiler)
+prepros-6.config
+
+## OS
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+
+## Pipenv file with virtual environment variables
+.env
