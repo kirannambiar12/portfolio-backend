@@ -15,9 +15,8 @@ router.register(r'about', about_views.AboutViewSet, 'about')
 router.register(r'work/technology', views.TechnologyViewSet, 'technology')
 
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
 ]
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
