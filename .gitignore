@@ -21,3 +21,4 @@ Desktop.ini
 
 ## Pipenv file with virtual environment variables
 .env
+/venv
