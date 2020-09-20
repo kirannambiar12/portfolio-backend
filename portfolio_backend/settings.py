@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import decouple from config
 import django_heroku
+from dj_database_url import parse as dburl
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'x7l(ko$!1ypn$n4xnnc^d4_l9m)73f_q=-mu!z_-+a^3d=w93%'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -96,23 +98,24 @@ WSGI_APPLICATION = 'portfolio_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "d5fv98k0ns0u1k",
-        'USER': "fxphduixnzligi",
-        'PASSWORD': "6c64a395bd14c7138e27a1e6c2f06d4712943a01e49a727c874545236759431f",
-        'HOST': "ec2-3-215-207-12.compute-1.amazonaws.com",
-        'PORT': '5432'
-    }
+    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': "d5fv98k0ns0u1k",
+#         'USER': "fxphduixnzligi",
+#         'PASSWORD': "6c64a395bd14c7138e27a1e6c2f06d4712943a01e49a727c874545236759431f",
+#         'HOST': "ec2-3-215-207-12.compute-1.amazonaws.com",
+#         'PORT': '5432'
+#     }
+# }
 
 
 # Password validation
@@ -151,7 +154,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
-STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT  =   os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra lookup directories for collectstatic to find static files
