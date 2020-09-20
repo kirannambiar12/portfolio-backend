@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import decouple from config
+from decouple import config
 import django_heroku
 from dj_database_url import parse as dburl
 
