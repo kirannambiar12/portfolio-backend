@@ -62,8 +62,8 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:3001",
-    "https://portfolio-django-backend.herokuapp.com/",
-    "https://kiran-portfolio.herokuapp.com/",
+    "https://portfolio-django-backend.herokuapp.com",
+    "https://kiran-portfolio.herokuapp.com",
 ]
 
 REST_FRAMEWORK = {
