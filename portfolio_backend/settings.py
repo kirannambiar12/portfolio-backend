@@ -64,6 +64,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3001",
     "https://portfolio-django-backend.herokuapp.com",
     "https://kiran-portfolio.herokuapp.com",
+    "http://www.kirannambiar.in",
 ]
 
 REST_FRAMEWORK = {
