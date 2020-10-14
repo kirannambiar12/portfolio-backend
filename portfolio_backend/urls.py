@@ -18,5 +18,6 @@ router.register(r'work/technology', views.TechnologyViewSet, 'technology')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

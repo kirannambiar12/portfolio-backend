@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'ckeditor',
     'corsheaders',
     'contact',
     'about',
@@ -191,4 +192,7 @@ MEDIA_URL = '/media/'
 
 # This is where we want Django to save media files uploaded via the admin panel or by users
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Will automatically be inside the MEDIA_ROOT folder
+CKEDITOR_UPLOAD_PATH = "ckeditor_uploads/"
 
