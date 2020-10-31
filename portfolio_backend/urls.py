@@ -7,6 +7,7 @@ from about import views as about_views
 from django.conf.urls.static import static
 from django.conf import settings
 from work import views
+from rest_framework.authtoken.views import obtain_auth_token
 
 router = routers.DefaultRouter()
 router.register(r'contact', contact_views.ContactViewSet, 'contact')
@@ -18,6 +19,7 @@ router.register(r'work/technology', views.TechnologyViewSet, 'technology')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('auth/', obtain_auth_token),
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
