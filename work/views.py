@@ -2,11 +2,16 @@ from django.shortcuts import render
 
 # Create your views here.
 from rest_framework import viewsets, permissions
-from work.models import Technology
-from work.serializers import TechnologySerializer
+from work.models import Service, TechnologiesAndFramework
+from work.serializers import ServiceSerializer, TechnologiesAndFrameworkSerializer
 
 
-class TechnologyViewSet(viewsets.ModelViewSet):
-    serializer_class = TechnologySerializer
-    queryset = Technology.objects.all()
+class ServiceViewSet(viewsets.ModelViewSet):
+    serializer_class = ServiceSerializer
+    queryset = Service.objects.all()
+    permission_classes = [permissions.AllowAny]
+
+class TechnologiesAndFrameworkViewSet(viewsets.ModelViewSet):
+    serializer_class = TechnologiesAndFrameworkSerializer
+    queryset = TechnologiesAndFramework.objects.all()
     permission_classes = [permissions.AllowAny]

@@ -1,8 +1,14 @@
 from rest_framework import serializers
-from work.models import Technology
+from work.models import Service, TechnologiesAndFramework
 
 
-class TechnologySerializer(serializers.ModelSerializer):
+class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Technology
-        fields = ('id', 'title', 'percentage', 'bar_color')
+        model = Service
+        fields = ('id', 'title')
+
+
+class TechnologiesAndFrameworkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TechnologiesAndFramework
+        fields = ('id', 'title')

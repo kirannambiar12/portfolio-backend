@@ -13,7 +13,8 @@ router = routers.DefaultRouter()
 router.register(r'contact', contact_views.ContactViewSet, 'contact')
 router.register(r'about/developer', about_views.DeveloperViewSet, 'developer')
 router.register(r'about', about_views.AboutViewSet, 'about')
-router.register(r'work/technology', views.TechnologyViewSet, 'technology')
+router.register(r'work', views.ServiceViewSet, 'technology')
+router.register(r'work', views.TechnologiesAndFrameworkViewSet, 'technology')
 
 
 urlpatterns = [
