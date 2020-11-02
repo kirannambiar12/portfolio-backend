@@ -13,9 +13,8 @@ router = routers.DefaultRouter()
 router.register(r'contact', contact_views.ContactViewSet, 'contact')
 router.register(r'about/developer', about_views.DeveloperViewSet, 'developer')
 router.register(r'about', about_views.AboutViewSet, 'about')
-router.register(r'work', views.ServiceViewSet, 'technology')
-router.register(r'work', views.TechnologiesAndFrameworkViewSet, 'technology')
-
+router.register(r'work/f&t', views.TechnologiesAndFrameworkViewSet, 'f&t')
+router.register(r'work/service', views.ServiceViewSet, 'service' )
 
 urlpatterns = [
     path('admin/', admin.site.urls),

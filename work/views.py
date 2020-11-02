@@ -11,6 +11,7 @@ class ServiceViewSet(viewsets.ModelViewSet):
     queryset = Service.objects.all()
     permission_classes = [permissions.AllowAny]
 
+
 class TechnologiesAndFrameworkViewSet(viewsets.ModelViewSet):
     serializer_class = TechnologiesAndFrameworkSerializer
     queryset = TechnologiesAndFramework.objects.all()
