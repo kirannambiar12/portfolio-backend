@@ -1,11 +1,12 @@
 from django.contrib import admin
 
 # Register your models here.
-from work.models import Technology
+from work.models import Service, TechnologiesAndFramework
 
 
-class TechnologyAdmin(admin.ModelAdmin):
-    list_display = ('title', 'percentage', 'bar_color')
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = ('title',)
 
 
-admin.site.register(Technology, TechnologyAdmin)
+admin.site.register(Service, ServiceAdmin)
+admin.site.register(TechnologiesAndFramework)

@@ -4,7 +4,7 @@ from rest_framework import routers
 from .views import AboutViewSet, DeveloperViewSet
 
 router = routers.DefaultRouter()
-router.register('about', DeveloperViewSet)
+router.register('about/developer', DeveloperViewSet)
 router.register('about', AboutViewSet)
 
 urlpatterns = [
