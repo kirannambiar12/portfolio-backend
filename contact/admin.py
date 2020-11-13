@@ -3,7 +3,7 @@ from .models import Contact
 
 
 class ContactAdmin(admin.ModelAdmin):
-    readonly_fields = ('name', 'email_id', 'subject')
+    readonly_fields = ('name', 'email_id', 'subject', 'date')
     list_display = ('name', 'email_id',)
 
 

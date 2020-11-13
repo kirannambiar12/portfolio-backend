@@ -7,4 +7,4 @@ class ContactSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Contact
-        fields = ('id', 'name', 'email_id', 'subject')
+        fields = ('id', 'name', 'email_id', 'subject', 'date')
