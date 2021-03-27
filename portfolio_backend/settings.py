@@ -105,10 +105,29 @@ WSGI_APPLICATION = 'portfolio_backend.wsgi.application'
 
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
-
-DATABASES = {
-    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
-}
+# [START db_setup]
+if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
+    # Running on production App Engine, so connect to Google Cloud SQL using
+    # the unix socket at /cloudsql/<your-cloudsql-connection string>
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/cloudsql/kiran-nambiar:asia-south1:kiran-nambiar12',
+            'NAME': 'main',
+            'USER': 'kiran',
+            'PASSWORD': 'Kiran@$2011',
+        }
+    }
+else:
+    # Running locally so connect to either a local MySQL instance or connect to
+    # Cloud SQL via the proxy. To start the proxy via command line:
+    #
+    #     $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:3306
+    #
+    # See https://cloud.google.com/sql/docs/mysql-connect-proxy
+    DATABASES = {
+        'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
+    }
 
 
 # DATABASES = {
@@ -183,7 +202,7 @@ STATIC_URL = '/static/'
 # All additional directories you want Django to look for static files during 'collectstatic'
 # outside of the static folder within a django app
 STATICFILES_DIRS = (
-    'portfolio/static/',
+    'static',
 )
 
 # This is where files go after you run the collectstatic command
