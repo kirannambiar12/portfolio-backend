@@ -106,15 +106,22 @@ WSGI_APPLICATION = 'portfolio_backend.wsgi.application'
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
 # [START db_setup]
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/cloudsql/kiran-nambiar:asia-south1:kiran-nambiar12',
-            'NAME': 'main',
-            'USER': 'kiran',
-            'PASSWORD': 'Kiran@$2011',
-        }
-    }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'HOST': '/cloudsql/kiran-nambiar:asia-south1:kiran-nambiar12',
+#         'NAME': 'main',
+#         'USER': 'kiran',
+#         'PASSWORD': 'Kiran@$2011',
+#     }
+# }
+
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+
+
+DATABASES = {
+    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
+}
 
 
 # DATABASES = {
@@ -188,9 +195,9 @@ STATIC_URL = '/static/'
 
 # All additional directories you want Django to look for static files during 'collectstatic'
 # outside of the static folder within a django app
-STATICFILES_DIRS = (
-    'static',
-)
+# STATICFILES_DIRS = (
+#     '/static/',
+# )
 
 # This is where files go after you run the collectstatic command
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
