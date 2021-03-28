@@ -103,31 +103,47 @@ WSGI_APPLICATION = 'portfolio_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+# default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
-
-DATABASES = {
-    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
-}
 
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'HOST': '/cloudsql/kiran-nambiar:asia-south1:kiran-nambiar12',
-#         'NAME': 'main',
-#         'USER': 'kiran',
-#         'PASSWORD': 'Kiran@$2011',
-#     }
+#     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
 # }
 
+if os.getenv('GAE_APPLICATION', None):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': "portfolio-db",
+            'USER': "kirannambiar",
+            'PASSWORD': "6lvnmj3E9Cw2g6ez",
+            'HOST': "/cloudsql/kiran-nambiar:asia-south1:portfolio-db",
+            'PORT': '5432'
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': "portfoliodb",
+            'USER': "kirannambiar",
+            'PASSWORD': "Kiran@$2011",
+            'HOST': "localhost",
+            'PORT': '5432'
+        }
+    }
+
+
+
+# This is local database configuration.
 
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': "d5fv98k0ns0u1k",
-#         'USER': "fxphduixnzligi",
-#         'PASSWORD': "6c64a395bd14c7138e27a1e6c2f06d4712943a01e49a727c874545236759431f",
-#         'HOST': "ec2-3-215-207-12.compute-1.amazonaws.com",
+#         'NAME': "portfoliodb",
+#         'USER': "kirannambiar",
+#         'PASSWORD': "Kiran@$2011",
+#         'HOST': "localhost",
 #         'PORT': '5432'
 #     }
 # }
