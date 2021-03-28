@@ -105,21 +105,19 @@ WSGI_APPLICATION = 'portfolio_backend.wsgi.application'
 
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': '/cloudsql/kiran-nambiar:asia-south1:kiran-nambiar12',
-        'NAME': 'main',
-        'USER': 'kiran',
-        'PASSWORD': 'Kiran@$2011',
-    }
+    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
 
-# default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
-
-
 # DATABASES = {
-#     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'HOST': '/cloudsql/kiran-nambiar:asia-south1:kiran-nambiar12',
+#         'NAME': 'main',
+#         'USER': 'kiran',
+#         'PASSWORD': 'Kiran@$2011',
+#     }
 # }
 
 
