@@ -113,28 +113,35 @@ WSGI_APPLICATION = 'portfolio_backend.wsgi.application'
 #     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
 # }
 
-if os.getenv('GAE_APPLICATION', None):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('DATABASE_NAME'),
-            'USER': config('DATABASE_USERNAME'),
-            'PASSWORD': config('DATABASE_PASSWORD'),
-            'HOST': "/cloudsql/kiran-nambiar:asia-south1:portfolio-db",
-            'PORT': '5432',
-        }
+# This configuration is for gcp database
+# This configuration is for gcp database
+# This configuration is for gcp database
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DATABASE_NAME'),
+        'USER': config('DATABASE_USERNAME'),
+        'PASSWORD': config('DATABASE_PASSWORD'),
+        'HOST': "/cloudsql/kiran-nambiar:asia-south1:portfolio-db",
+        'PORT': '5432',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('DATABASE_NAME'),
-            'USER': config('DATABASE_USERNAME'),
-            'PASSWORD': config('DATABASE_PASSWORD'),
-            'HOST': "localhost",
-            'PORT': '5433'
-        }
-    }
+}
+
+# This configuration is for local database
+# This configuration is for local database
+# This configuration is for local database
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': config('DATABASE_NAME'),
+#         'USER': config('DATABASE_USERNAME'),
+#         'PASSWORD': config('DATABASE_PASSWORD'),
+#         'HOST': "localhost",
+#         'PORT': '5433'
+#     }
+# }
 
 
 
