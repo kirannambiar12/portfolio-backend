@@ -14,10 +14,8 @@ import os
 from decouple import config
 # import django_heroku
 from dj_database_url import parse as dburl
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -68,7 +66,12 @@ CORS_ALLOWED_ORIGINS = [
     "https://kiran-portfolio.herokuapp.com",
     "http://www.kirannambiar.in",
     "https://www.kirannambiar.in",
+    "http://admin.kirannambiar.in",
+    "https://kiran-nambiar.el.r.appspot.com",
 ]
+
+X_FRAME_OPTIONS = 'ALLOWALL'
+XS_SHARING_ALLOWED_METHODS = ['POST','GET','OPTIONS', 'PUT', 'DELETE']
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -114,22 +117,22 @@ if os.getenv('GAE_APPLICATION', None):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': "portfolio-db",
-            'USER': "kirannambiar",
-            'PASSWORD': "6lvnmj3E9Cw2g6ez",
+            'NAME': config('DATABASE_NAME'),
+            'USER': config('DATABASE_USERNAME'),
+            'PASSWORD': config('DATABASE_PASSWORD'),
             'HOST': "/cloudsql/kiran-nambiar:asia-south1:portfolio-db",
-            'PORT': '5432'
+            'PORT': '5432',
         }
     }
 else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': "portfoliodb",
-            'USER': "kirannambiar",
-            'PASSWORD': "Kiran@$2011",
+            'NAME': config('DATABASE_NAME'),
+            'USER': config('DATABASE_USERNAME'),
+            'PASSWORD': config('DATABASE_PASSWORD'),
             'HOST': "localhost",
-            'PORT': '5432'
+            'PORT': '5433'
         }
     }
 
