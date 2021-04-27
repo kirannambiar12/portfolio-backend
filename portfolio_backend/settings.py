@@ -106,27 +106,27 @@ WSGI_APPLICATION = 'portfolio_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-# default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
-
-# DATABASES = {
-#     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
-# }
-
-# This configuration is for gcp database
-# This configuration is for gcp database
-# This configuration is for gcp database
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DATABASE_NAME'),
-        'USER': config('DATABASE_USERNAME'),
-        'PASSWORD': config('DATABASE_PASSWORD'),
-        'HOST': "/cloudsql/kiran-nambiar:asia-south1:portfolio-db",
-        'PORT': '5432',
-    }
+    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
 }
+
+# This configuration is for gcp database
+# This configuration is for gcp database
+# This configuration is for gcp database
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': config('DATABASE_NAME'),
+#         'USER': config('DATABASE_USERNAME'),
+#         'PASSWORD': config('DATABASE_PASSWORD'),
+#         'HOST': "/cloudsql/kiran-nambiar:asia-south1:portfolio-db",
+#         'PORT': '5432',
+#     }
+# }
 
 # This configuration is for local database
 # This configuration is for local database
@@ -225,10 +225,10 @@ STATIC_URL = '/static/'
 # This is where files go after you run the collectstatic command
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/tmp/media/'
 
 # This is where we want Django to save media files uploaded via the admin panel or by users
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, '/tmp/media/')
 
 # Will automatically be inside the MEDIA_ROOT folder
 CKEDITOR_UPLOAD_PATH = "ckeditor_uploads/"
